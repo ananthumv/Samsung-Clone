@@ -1,0 +1,89 @@
+body{
+    margin-left: 20px;
+}
+body p{
+   font-size: 18.4px;
+   color: rgb(110, 105, 105);
+}
+li{
+    font-size: 18.3px;
+    color: rgb(110, 105, 105);
+ }
+body h1{
+    font-size: 45px;
+    font-weight: bold;
+    margin: 100px 0px 0px 0px;
+}
+body h2{
+    font-size: 35px;
+    font-weight: 500;
+}
+body h3{
+    font-size: 25px;
+    font-weight: 500;
+}
+#navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: lighter;
+    color: rgb(117, 116, 116);
+    font-size:18px;
+    border-bottom: 1px solid rgb(217, 215, 215) ;
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255,.959)
+}
+#navList{
+    list-style-type: none;
+    display: flex;
+    float: left;
+    margin-left: 160px;
+}
+#navList li{
+    margin-right: 50px;
+}
+#navHead{
+    font-weight: bold;
+    color: rgb(30, 30, 30);
+    font-size: 21px;
+    width: 190px;
+    margin-left: 30px;
+}
+#navSign{
+    margin-left: 155px;
+}
+a{
+    font-weight: bold;
+    color: rgb(15, 15, 193);
+    text-decoration: none;
+}
+.img{
+    display: grid;
+    justify-content: center;
+    margin: 20px;
+}
+.imgs{
+    display: grid;
+    grid-template-columns: 350px 350px;
+    justify-content: center;
+    align-items: center;
+}
+.imgsCap{
+    display: grid;
+    grid-template-columns: 350px 350px;
+    justify-content: center;
+    margin: 0px 0px 0px 70px;
+}
+#logo{
+    display: grid;
+    grid-template-columns: 80px 350px;
+    color: rgb(134, 134, 135);
+    align-items:  center;
+    margin-top: 24px;
+}
+.divText{
+    background-color:#e3fafd;
+    padding: 4px;
+    margin: 30px 15px 50px 5px;
+}

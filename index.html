@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="mainContainer">
+        <div id="navbar">
+            <div id="navHead">
+                Samsung Developers
+            </div>
+            <div>
+                <ul id="navList">
+                    <li>Learn</li>
+                    <li>Develop</li>
+                    <li>Design</li>
+                    <li>Distribute</li>
+                    <li>Support</li>
+                    <li>Connect</li>
+                </ul>
+            </div>
+            <div id="navSign">
+                Sign In
+            </div>
+        </div>
+        <h1>Things to Consider when Designing Complication Layouts</h1>
+        <div id="logo">
+            <img src="images/logo.png" alt="logo">
+            <p>Most Fowziya Akther Houya
+            <br> Engineer, Product Development Planning</p>
+        </div>
+        <div  class="img">
+            <img src="/images/samsangAd.png" alt="Ad">
+        </div>
+        <p> <a href="https://developer.samsung.com/watch-face-studio/overview.html">Watch Face Studio</a> is an intuitive graphical tool that provides designers a means to design watch faces without jumping into complex coding. <a href="https://developer.android.com/training/wearables/wfs/complications">Complication</a>  design is a major feature of this tool, and layout is a vital property of complications. The layout enables you to place components as you wish to create eye-catching watch faces. To learn more about complications, see the <a href="https://developer.samsung.com/sdp/blog/en-us/2022/08/17/design-complications-using-watch-face-studio">Design Complications Using Watch Face Studio</a> blog post.</p>
+        <p>Watch Face Studio has six complication types:</p>
+        <ul>
+            <li>Short text</li>
+            <li>Monochromatic image</li>
+            <li>Ranged value</li>
+            <li>Long text</li>
+            <li>Small image</li>
+            <li>Large image</li>
+        </ul>
+        <p>Each complication has a set of layout options. You can use the layout to present information in a coherent way and make important elements stand out.
+        <br>
+        <br> This article introduces three important behaviors that you must keep in mind when working with complication layouts.</p>
+        <h2>Blank elements in the default layout</h2>
+        <p>Some complication providers do not provide data for all the components on a complication. Elements without data remain blank on the watch face.
+        <br>
+        <br>For example, Figure 1a shows the default layout for the short text complication. It displays the icon, title, and text from the provider. The "Step count" provider does not include an icon. If the default layout is used with the "Step count" provider, the watch face is blank where the icon is normally displayed, as shown in Figure 1b.
+        </p>
+        <div class="imgs">
+                <img src="images/stepcountA.png" alt="stepcount">
+                <img src="images/stepcountB.png" alt="stepcount">
+        </div>
+        <div class="imgsCap">
+            <p>(a) "Icon + Text + Title" layout</p>
+            <p>(b) No icon for Step count</p>
+        </div>
+        <div class="img">
+            <p>Figure 1: Blank icon slot for Step count</p>
+        </div>
+        <h2>Specifying a single layout</h2>
+        <p>Watch Face Studio provides four possible layouts for the short text complication. To implement one specific layout only, you must remove the unwanted layouts from the layout list. For example, if you want to use only the "Icon + Text" layout, select it and remove the others.</p>
+            <div class="imgs">
+                <img src="images/layoutA.png" alt="layout">
+                <img src="images/layoutB.png" alt="layout">
+            </div>
+            <div class="imgsCap">
+                <p>(a) Keep desired layout and remove others</p>
+                <p>(b) "Icon + Text" layout on watch</p>
+            </div>
+            <div class="img">
+                <p>Figure 2: Setting a specific layout</p>
+            </div>
+        <h2>Components moving between layouts</h2>
+        <p>As previously discussed, complication components appear blank when there is no data provided for them. To avoid displaying blank components, you can implement multiple layouts. In this case, the watch automatically selects the appropriate layout based on the complication provider.</p>
+        <h3>Components changing position</h3>
+        <p>This section demonstrates an issue commonly faced when implementing multiple layouts. When the watch switches between layouts, the position of complication components can change undesirably.
+        <br>
+        <br>In Figure 3, a short text complication has been selected. To visualize the original position of each component, rectangles have been drawn around them, matching the component boundaries.
+        <br>
+        <br> When the default provider is set to "Sunrise sunset" and the default "Icon + Text + Title" layout is selected, the Run preview shows the icon and text displaying perfectly within the bounded area</p>
+        <div class="img">
+            <img src="images/figure3.png" alt="figure3">
+        </div>
+        <div class="img">
+            <p>Figure 3: Visualizing the positions of the default layout components</p>
+        </div>
+        <br><p>Figure 4 shows what happens when the layout is switched to "Text + Title." The components’ positions have changed and are no longer aligned with our rectangles.</p>
+        <div class="divText">
+            <p>
+                Note :
+            <br> Watch Face Studio allows you to select and preview any layout. On an actual watch, the user cannot modify or switch layouts.
+            </p>
+        </div>
+        <div class="img">
+            <img src="images/figure4.png" alt="figure4">
+        </div>
+        <div class="img">
+            <p>Figure 4: Complication components changing position between different layouts</p>
+        </div>
+        <p>In Figure 5, the watch face has been deployed. Customizing the complication reveals that the components do not consistently display in the same location. For example, with the "Bixby" or "Barometer" providers, the components are in the appropriate positions. However, the components of "Feels like temp." and "Step count" are not in alignment.</p>
+        <div>
+            <div class="imgs">
+                <img src="images/bixby.png" alt="bixby">
+                <img src="images/temp.png" alt="temp">
+            </div>
+            <div class="imgsCap">
+                <p>(a) Bixby</p>
+                <p>(b) Feels like temp.</p>
+            </div>
+            <div class="imgs">
+                <img src="images/count.png" alt="count">
+                <img src="images/barometer.png" alt="barometer">
+            </div>
+            <div class="imgsCap">
+                <p>(c) Step count</p>
+                <p>(d) Barometer</p>
+            </div>
+            <div class="img">
+                <p>Figure 5: Complication components changing position between different layouts on an actual watch</p>
+            </div>
+        </div>
+        <h3>Fixing the position of complication components</h3>
+        <p>This section demonstrates how to make the position of complication components consistent, where the end result is the fixed layout. This resolves the problem of components changing position between layouts. You can follow along with the demonstration by downloading the sample project.</p>
+        <br> <p>To fix the position of complication components:</p>
+        <ol>
+            <li>In Watch Face Studio, add a short text complication.</li>
+            <li>To create a rectangle, select <strong>Add Component > Shape > Rectangle.</strong> </li>
+            <div class="divText">
+                <p>
+                    Note :
+                    <br> Instead of a rectangle, you can also use an ellipse.
+                </p>
+            </div>
+            <li>Adjust the position and size of the rectangle to fit the entire layout.</li>
+            <li>Set the opacity of the rectangle to 0%.</li>
+            <br><p>The rectangle becomes invisible.</p>
+            <div class="divText">
+                <p>Note :
+                    <br> In the sample project, for demonstration purposes, the rectangle’s opacity has been set to 20%.</p>
+            </div>
+            <li>Give the shape a descriptive name, such as “Icon, Text, Title Background.”</li>
+            <li>Add the rectangle to the Short Text Complication layout, placing it beneath the Icon component.</li>
+            <div class="img">
+                <img src="images/rectagleLayout.png" alt="rectagleLayout">
+            </div>
+            <div class="img">
+                <p>Figure 6: Adding the rectangle to the layout</p>
+            </div>
+            <li>Add the remaining layouts ("Text + Title," "Icon + Text," and "Text") to the complication.</li>
+            <li>Repeat steps 2 to 6 for each layout you want to implement.</li>
+            <p>The following figure shows the result in Watch Face Studio.</p>
+            <div class="img">
+                <img src="images/figure7.png" alt="figure7">
+            </div>
+            <div class="img">
+                <p>Figure 7: Watch Face Studio view after adding background rectangle</p>
+            </div>
+            <br><p>When the project is deployed to the watch, the complication components stay in the same place even when switching between layouts.</p>           
+        </ul>
+        <div class="imgs">
+            <img src="images/bixby.png" alt="bixby">
+            <img src="images/temp.png" alt="temp">
+        </div>
+        <div class="imgsCap">
+            <p>(a) Bixby</p>
+            <p>(b) Feels like temp.</p>
+        </div>
+        <div class="imgs">
+            <img src="images/count.png" alt="count">
+            <img src="images/barometer.png" alt="barometer">
+        </div>
+        <div class="imgsCap">
+            <p>(c) Step count</p>
+            <p>(d) Barometer</p>
+        </div>
+        <div class="img">
+            <p>Figure 8: Consistent component position between different layouts</p>
+        </div>
+        <h2>Conclusion</h2>
+        <p>Watch Face Studio provides various layout options for the watch face. The layout considerations described in this blog can help you create an effective layout that enhances and communicates your design to the user.</p>
+        <h2>Resources</h2>
+        <p>For more information about complications, see <a href="https://developer.android.com/training/wearables/wfs/complications">Build complications in Watch Face Studio</a>. You can also visit the <a href="https://forum.developer.samsung.com/c/watch-face-studio/49"> Samsung Developers Forum</a>, an active and friendly community where you can ask for and receive help with your application development.
+        <br>
+        <br> The Samsung Developers site has many resources for developers looking to build for and integrate with Samsung devices and services. Stay in touch with the latest news by <a href="https://us.account.samsung.com/accounts/v1/SD/signInGate?response_type=code&client_id=x1a86ah5j4&redirect_uri=https:%2F%2Fdeveloper.samsung.com%2Fsa%2Fsignin%2Fcallback&state=VmpKMGIxTXlSa2hWV0d4V1lteHdjRlJVU2xOT2JHUlhXVE5vYTJKVldrcFdWbEYzVUZFOVBR&goBackURL=https:%2F%2Fdeveloper.samsung.com">creating a free account</a> and <a href="https://samsung.us11.list-manage.com/subscribe?u=498f4566539b5e6a3e0505d7d&id=b436204459"> subscribing to our monthly newsletter</a>. Visit the <a href="https://developer.samsung.com/galaxy-store/marketing-resources.html">Marketing Resources</a> page for information on promoting and distributing your Android apps.</p>
+    </div>
+</body>
+</html>
